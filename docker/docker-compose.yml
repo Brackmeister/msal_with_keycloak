@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.5
+    container_name: keycloak_for_msal
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ./localhost.pem:/etc/x509/https/certfile.pem
+      - ./localhost.key:/etc/x509/https/keyfile.pem
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    entrypoint: /opt/keycloak/bin/kc.sh start-dev --https-certificate-file=/etc/x509/https/certfile.pem --https-certificate-key-file=/etc/x509/https/keyfile.pem
