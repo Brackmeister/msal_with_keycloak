@@ -15,7 +15,9 @@ class TestController {
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @GetMapping
-    public void checkAuth(Principal principal) {
-        logger.info("Got called by " + principal.getName());
+    public String checkAuth(Principal principal) {
+        String name = principal.getName();
+        logger.info("Got called by " + name);
+        return '"' + name + '"';
     }
 }
