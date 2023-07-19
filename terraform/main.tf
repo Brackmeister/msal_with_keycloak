@@ -11,7 +11,8 @@ resource "keycloak_openid_client" "openid_client" {
   access_type              = "PUBLIC"
   standard_flow_enabled    = true
   valid_redirect_uris      = [
-    "http://localhost:3000/*"
+    "http://localhost:3000/*",
+    "https://oauth.pstmn.io/v1/callback"
   ]
   web_origins = [
     "+"
